@@ -1,0 +1,7 @@
+  PID TTY           TIME CMD
+ 4176 ttys002    0:00.52 -zsh
+ 4226 ttys003    0:00.22 -zsh
+51202 ttys009    0:00.07 /Applications/iTerm.app/Contents/MacOS/iTerm2 --server login -fp tboudreaux
+51301 ttys009    0:03.36 -zsh
+79740 ttys009    1:45.99 nbody6++.hdf5
+79886 ttys009    0:00.00 /bin/bash ./nbodyKill.sh

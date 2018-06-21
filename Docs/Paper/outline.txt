@@ -1,0 +1,31 @@
+# Paper Outline
+
+1) Title: 
+2) Abstract
+    
+3) Introduction
+    3a) Globular Cluster Lit Review
+    3b) Spesificic Question
+    3c) How we solve it
+    3d) Basic overview of results
+    3e) Summery of sections
+
+4) Simulation
+    4a) Initial Conditions
+    4b) Run Parameters
+    4c) Output data
+
+5) Analysis
+    THINGS HERE
+
+6) Disscussion
+    THINGS HERE
+
+7) Conculusion
+    THINGS HERE
+
+8) Aknowledgments
+    THANKS HERE
+
+9) Bib
+    OKAY!

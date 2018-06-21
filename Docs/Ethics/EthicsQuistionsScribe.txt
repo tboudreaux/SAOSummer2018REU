@@ -1,0 +1,53 @@
+# Ethichs Case Study Scribing
+# Case Study Two
+# Title: Data Reliability and Analysis
+# Date: June 8, 2018
+
+Participents:
+    Amalya Johnson
+    Aldo Sepulveda
+    Evan Nunez
+    Jackie Blaum
+    CeeCee Bishop
+    Megan Masterson
+    Osase Omoruyi
+    Sierra Dodd
+    Tenley
+    Thomas Boudreaux
+    Matthew Ashby
+    Jonathan McDowell
+
+Case Study Setup:
+-----------------
+
+Data Reliability and Analysis:
+
+You want to test a previously established empirical fit between two observed properties of galaxies, one that was obtained through rigorous methods and is widely accepted as valid. After collecting your data, you find that you have many outliers from the expected relation. Standard practice says you should remove these outliers (by sigma clipping, or similar methods) to better fit the expected result - but you don’t have an a priori reason to mistrust these data.
+
+After conducting your analysis, you cannot discover a source of systematic error in your work which could acount for these discrepancies. This result challenges previous assumptions, and you believe it is important for others to consider - but you are also concerned that your work may be flawed in some way. How do you proceed? 
+
+
+Transcription:
+--------------
+Amalya Johnson: Reads Question / Situation
+Megan Masterson: Talk to peers, even doing homework don't see obvoius mistakes, check with friends, someone higher up
+Jackie Blaum: Go back, redo analysis, if still not confident by that point you might not have found where you are confident
+Amalya Johnson: What if it is code, or a systematic problem with the collection tecnology, so that reanalysis always yields the same result
+Sierra Dodd: I would err on the side of not feeling pressure to publish
+Tenley: talk to someone from the data source, double check with the people who provided the data to you that their data process was okay
+Amalya Johnson: Does the level at which one looks at the data depend on the location where it would be published
+Jackie Blaum: Anything going to the public should be looked at at the same way
+Evan Nunez: yea, layers and layers of redudency, let someone else run your scripts, make sure results are the same, run it by you advisor make sure they are okay with it. the more people look at it the more credibility you have
+Tenley: What is so wrong with having outliers published in the data
+Sierra Dodd: This is talking more about wild numbers of outliers
+Amalya Johnson: agreees
+Tenley: History tells us its not too terrible to publish it, even if it ends up being wrong
+Jackie Blaum: As long as you checked ahead of time
+Sierra Dodd: it happend, stuff can be corrected in the future
+Megan Masterson: See if there are any other cooroberating peice of evidence in the literature, or that you can find in observations, can you redo the data.
+Amalya Johnson: Do any of these thoughts change depending on if you are an undergraduate / latter in ones career
+Megan Masterson: as an undergraduate you don't nessisaritly have a choice unless you self publish
+Amalya Johnson: going back to jackie yea it should all be the same, I think as an undergraduate we are more careful
+Aldo Sepulveda: I don't see why you can't do both, have two sections where you present your outlies, and another where you show what would happen if one were to sigma clip, how that would change the results.
+
+CLOSES

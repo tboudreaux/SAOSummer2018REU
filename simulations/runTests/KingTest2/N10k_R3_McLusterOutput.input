@@ -1,0 +1,165 @@
+1     2     3  4  5  6
+1 5000000.0 0 40 40 640
+=======================
+1) Controls the start of a run (1 for new run, 2 to pick back up if a fort.1 file exists)
+2) Maxmimum wall clock time to run (exit condition)
+3) Myr Termination Time (exit condition)
+4) minimum irregular block size (MPI)
+5) minimum regular block size (MPI)
+6) minimum KS block size
+
+1     2  3   4    5  6  7
+10000 1 10 77995 200 1 10
+=========================
+1) Total number of particles
+2) outupt interval multiplicitive factor
+3) minimum particle number
+4) random number seed
+5) optimal neighbour number
+6) Run ID
+7) NCOMM, no idea, not referenced anywhere
+
+1      2       3          4          5          6          7         8          9 
+0.02 0.02 0.17061827 1.00000000 1.00000000 100.00000000 1.0E-03 3.68834779 0.56260271
+=====================================================================================
+1) Time step factor for irregular force polynominal
+2) Time step factor for regular force polynominal
+3) Initial guess for all radii of neighbour spheres (N--body units)
+4) Time Interval for parameter adjusment and energy check
+5) Time interval for wrigitng output and diasnostics, multiplied by NFIX (N--body units)
+6) Termination time (N--body units)
+7) Energy tolerance
+8) Scaling unit in pc for distance 
+9) Scaling unit for average particle mass in solar masses
+
+1 2 3 4 5 6 7 8 9 10
+2 2 1 0 1 0 2 0 0 2
+====================
+1) Save COMMON to file fort.1 for run restart and end of run
+2) Save COMMON to file fort.2 for run restart at output time
+3) save basic data to file conf.3
+4)
+5)
+6)
+7)
+8)
+9)
+10)
+
+1 2 3 4 5 6 7 8 9 10
+0 1 0 3 2 0 0 0 3 3
+====================
+1)
+2)
+3)
+4)
+5)
+6)
+7)
+8)
+9)
+10)
+
+1 2 3 4 5 6 7 8 9 10
+0 2 0 0 1 2 0 1 0 1
+====================
+1)
+2)
+3)
+4)
+5)
+6)
+7)
+8)
+9)
+10)
+
+1 2 3 4 5 6 7 8 9 10
+0 0 0 2 1 0 0 2 0 3
+====================
+1)
+2)
+3)
+4)
+5)
+6)
+7)
+8)
+9)
+10)
+
+1 2 3 4 5 6 7 8 9 10
+0 0 0 0 0 3 0 0 0 0
+====================
+1)
+2)
+3)
+4)
+5)
+6)
+7)
+8)
+9)
+10)
+
+   1     2     3   4    5       6
+1.0E-5 1.0E-4 0.2 1.0 1.0E-06 0.001
+===================================
+1)
+2)
+3)
+4)
+5)
+6)
+
+    1          2           3     4 5       6       7           8
+2.350000 100.00000000 0.08000000 0 0 0.02000000 0.00000000 1.00000000
+=====================================================================
+1)
+2)
+3)
+4)
+5)
+6)
+7)
+8)
+
+  1   2   3     4       5
+0.50 0.0 0.0 0.00000 0.125
+==========================
+1)
+2)
+3)
+4)
+5)
+
+    1             2           3        4         5         6          7          8        9
+1.405920e+10 8.560800e+10 5.317800 0.250000 220.000000 8.500000 0.000000e+00 1.000000 1.000000
+==============================================================================================
+1)
+2)
+3)
+4)
+5)
+6)
+7)
+8)
+9)
+
+    1        2        3        4        5          6  
+8.500000 0.000000 0.000000 0.000000 220.000000 0.000000
+=======================================================
+1)
+2)
+3)
+4)
+5)
+6)
+
+    1        2        3        4 
+0.000000 0.000000 0.000000 0.000000
+===================================
+1)
+2)
+3)
+4)

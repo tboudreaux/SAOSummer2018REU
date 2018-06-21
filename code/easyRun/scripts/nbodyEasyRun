@@ -1,0 +1,34 @@
+#!/bin/bash
+
+INPUT_FILE=$1;
+
+DIRNAME=$(echo $INPUT_FILE | cut -d'.' -f 1);
+
+OVERWRITE=${2:--c};
+COPYDAT=${3:--b}
+
+if [ -d $DIRNAME ]; then 
+  if [ $OVERWRITE == "-c" ]; then
+    echo "Old Run Saved to: OLD_"$DIRNAME$(date '+%d-%m-%Y_%H:%M:%S');
+    mv $DIRNAME "OLD_"$DIRNAME$(date '+%d-%m-%Y_%H:%M:%S');
+  elif [ $OVERWRITE == '-o' ]; then
+    rm -r $DIRNAME;
+  fi
+fi
+
+
+mkdir $DIRNAME;
+
+if [ $COPYDAT == '-d' ]; then
+    dat=$(ls | grep dat.10 | grep -v "grep");
+    if [ $dat == 'dat.10' ]; then
+        cp dat.10 $DIRNAME
+    fi
+fi
+
+
+
+cd $DIRNAME
+
+FILENAME='../'$1;
+nbody6++.hdf5 < "$FILENAME" > $PWD"/run.dat" &

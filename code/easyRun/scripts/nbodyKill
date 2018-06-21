@@ -1,0 +1,4 @@
+#!/bin/bash
+
+PID=$(ps | grep nbody6++.hdf5 | grep -v "grep" | cut -d' ' -f 1);
+kill -9 $PID

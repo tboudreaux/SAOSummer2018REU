@@ -1,0 +1,141 @@
+# Written based on Mac OS 10.13.2
+# Last Updated: June 11th 2018
+
+Current Issues, Goals, and Questions:
+-------------------------------------
+
+1) Can't get two plummer model cluster.
+    Input File as follows:
+        1 1000000.0 1.E6 40 40 40
+        2000 1 10 452 100 1 10
+        0.02 0.02 0.3 1.0 1.0 1000.0 2.0E-03 1.0 0.7
+        0 1 1 0 2 0 4 3 0 2 # Note KZ(5) set 2
+        0 1 0 0 2 0 0 3 3 6
+        1 0 2 0 0 2 0 0 0 2
+        1 0 2 0 1 0 1 1 0 0
+        0 0 0 0 0 1 0 0 0 0
+        1.0E-04 1E-3 0.1 1.0 1.0E-06 0.01 0.25
+        2.35 100.0 0.08 500 30 0.001 0 1.0
+        100.0 0 2000 0.5    # extra line added b/c KZ(5) set 2
+        0.5 0.0 0.0 0.0
+        2.E-4 -1.0 1.0 1.E3 5 0 
+        1.E-5 -1.0 1.0 5.0 0
+
+    Symptoms:
+        - Nbody6++GPU inatalizes with no obvious issues
+        - Will run seamingly with no end (have let run for 10 hours)
+        - No snapshots are written out
+        - Most files that do get written are empty
+        - Does not respond to STOP file placed in directory
+        - job must be killed 
+        - One File (nbflow.41) has huge amounts of info dumped into it. 
+            - over one hour it balloned to 4 GB of text data
+                - Every line was: 
+                OVERFLOW! I    1001  NBNEW  4030  RNB[NB]**********  RI[NB]   42.3787
+
+    Files Written:
+        bdat.8 -- Empty
+        bs.91 -- Empty
+        chstab.81 -- Empty
+        coll.13 -- Empty
+        esc.11 -- Empty
+        event.35 -- Empty
+        global.30 -- Empty
+        hiarch.12 -- Empty
+        highv.29 -- Empty
+        histab.73 -- Empty
+        ibcoll.42 -- Not Empty
+        lagr.7 -- Empty
+        merger.84 -- Empty
+        mix.15 -- Empty
+        nbflow.41 -- Not Empty
+        pbin.18 -- Empty
+        sediag.38 -- Empty
+        sediag.43 -- Empty
+        shrink.14 -- Empty 
+        status.36 -- Empty
+        symb.20 -- Empty
+
+2) Start working towrds a ``main'' simulation
+    - Figure out what parameters we are interested in for this simulation
+    - Figure out how to format the input file such that it matches the desired initial conditions
+
+3) Cluster
+    - Run nBody6++GPU on cluster
+
+4) Confirm KW parameter in snapshots
+    - Pretty sure that is giving the stellar type (0 : Low Main Sequence, 1 : Main Sequence, 2 : Hertzsprung gap (HG), and more (for more see Manual Page 39))
+
+5) Times listed in different formats in global.# files don't seam to be consistant with one and other [RESOLVED]
+    - Time[NB} alwats increases at the same rate
+    - Time listed in the parrallel Time[Myr] column seams to jump around 
+    - See the file names "screenshots/time_problem.png" on the googel drive for an example of this
+
+6) Cannot read conf files
+    - They are presented as "unformatde binary data" however it is unclear how to parse the data, i.e. what bytes encode what information. I cannot think of a way to determine with without some clue as to how the file is written
+
+7) Cannot get an external particle distribution file to read in, even one what was written out in a previous run
+
+8) initial conditions of particle distribution function do not match the N values set in input file
+    - for the N2k sample the system initalized with ~2500 particles, if I change N to 1000 it initalized with around ~1500 particles
+    - The code will not run with N=100
+        - Presumably this is because N=100 conflicts with some other settings somewhere in the input file; I don't currently undsterstand the interdepencancies between input parameters well enough to speak to this point.
+
+9) Understand exit conditions
+    - A simulation will exit without providing feedback, investigating the diagnosis file will show a line "CALCULATIONS HALTED * * *" however it is not clear here what exit condition was reached. That information seams important.
+
+10) Issues for disscussion on Friday
+    I) Getting external Mass files read in
+        i) 10000_B3_King.txt loads with N10k.input file (drive)
+            a) This is in physical units KZ(22) = 10
+            b) might want to increase neightbor number
+            c) turn off primordial binaries KZ(8) = 0
+            d) Turn on KZ(16) = 1
+                i) KS regularization to help conserve energy
+            e) Turn on KZ(17) = 1
+                i) Adjust ETAI time step size
+            f) Turn off KZ(23) = 0
+                i) Turn off esaping particles, it conflicts with stellar evoluton (if stellar evolution is turned on turn off escapers)
+            g) Turn off KZ(35)
+                i) Resets time every TTOT = TIME + TOFF if it is on, turn it off to avoid this behavior
+            h) Set KZ(46) = 3
+                i) output all particles not just active particle list
+            i) make data.F parameters consitent with those output from McLuster (max body mass, etc...)
+
+            j) In general check McLuster output for nbody6++ input
+
+            k) check what Nbody6 is going when RTIDE = 0 (scale.F)
+        ii) One snapshot is output
+        iii) program hangs unresponsive to STOP file introduction
+    II) Using McLuster to generate valid input files for nbody6++GPU
+    III) Reading conf files
+        a) dont bother with this, pull out that information from log file
+            i) lines starting with CLUSTER
+    IV) Best output practices
+    V) Others?
+
+More Issues (Many Potential Related):
+    - Got the simulation to run and not hang (on time scales that I have been able to run it for, so far a max of 2 hours)
+
+    - Working on getting cluster params to write out to cluster_status.csv file
+
+    - What are the differences between step #s
+
+    - Simulations are stoping at 100 snapshots pretty much no matter what (sorted this out)
+
+    - Exit condition being hit but I don’t know why they are being hit (writing TOTAL CPU = ***)
+
+    - nbflow seams to be an issue
+
+    - Can’t get code to run for more than 100 snapshots, this has yet to get about 300 Myr (sorted all of this out TCRIT was the problem)
+
+    - Make the random number seeds in the input file the same between runs
+
+    - Binary0-5 won’t get past 17 snapshots, but its is not hanging (can stop by introducing STOP file) but is not writing anything to files (ran for 45 minutes like that before I stoped it)
+
+    - Mydump error was resolved by stoping check.f from calling my dump, seams like an incredibly stupid way to fix things but I think all that is is debug info, so stopping it from writing out in that place should not matter?
+
+Energy Error:
+    - If I try and restart after the energy error happens the program crashes (KZ(2)=2 to restart, KZ(2)=1 to end when the energy error arises)
+
+    - By changing the energy tolerance (QE) this problem seams to be mitigable, at least in the short term? (went from 2e-5 to 2e-3)

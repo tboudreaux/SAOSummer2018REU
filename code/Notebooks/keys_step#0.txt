@@ -1,0 +1,17 @@
+Binaries
+KW
+L - L [L*] - Luminosity
+M - M [M*] - Mas
+MC - MCORE - Stellar Core Mass
+Mergers
+NAM - NAME - Object ID
+POT - POT [NB] - Potential Energy
+RC - RSCore [R*] - Stellar Core Radius
+RS - RS [R*] - Star Radius
+TE - TEFF [K] - Effective Temperature
+V1 - V1 [km/s] - Velocity
+V2 - V2 [km/s] - Velocity
+V3 - V3 [km/s] - Velocity
+X1 - X1 [pc] - Position
+X2 - X2 [pc] - Position 
+X3 - X3 [pc] - Position
