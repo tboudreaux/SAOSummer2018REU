@@ -1,0 +1,14 @@
+#!//anaconda/envs/nbody6++vis/bin/python
+
+import pandas as pd
+import os
+
+things = os.listdir('.')
+
+
+if 'cluser_status.csv' not in things:
+    raise IOError('File cluser_status.csv not found in directory!, are you in an nbody simulation?')
+
+df = pd.read_csv('cluser_status.csv', sep=r'\s+', engine='python')
+df['Time'] = df['TTOT']*df['TSTAR']
+print('Total time elapsed: {:0.2f} Myr'.format(df['Time'].iloc[-1]))

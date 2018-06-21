@@ -1,4 +1,5 @@
 *.h5part
+*-checkpoint.ipynb
 *.0*
 *.1*
 *.2*
