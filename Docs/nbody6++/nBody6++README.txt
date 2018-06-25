@@ -230,3 +230,24 @@ Basic Python 2D Visualization of Data:
 Extermal Files:
     In lew of the included mass distributions externally generated mass distributions can be read in. To do this make sure KZ(5) = 0. Then KZ(22) will be the pertinant option. Then if KZ(22) >= 2 data will be read externally. The format of this data is dependant on the exact setting of KZ(22). As an example in the nbody format
 
+External Programs
+    McLuster can be used to generate these mass distributions, as well as input files. However for Nbody6++GPU these input files will not nativly work. To make them work first open the main.c file in the McLuster source. Change line 4960 to 
+
+        fprintf(PAR,"%i 1 10 %i %i 1 1\n",N,seed,NNBMAX);
+
+    from
+
+        fprintf(PAR,"%i 1 10 %i %i 1\n",N,seed,NNBMAX);
+
+    i.e. add in a second 1 in the fprintf. Then in the root McLuster directory run
+
+        make mcluster
+
+    or if you want to use the more complex version which can handle stellar evolution
+
+        make mcluster_sse
+
+    then add the directory to your PATH. After this when you want to call McLuster for use with Nbody6++GPU make sure to set the -C flag to 5, eg.
+
+        mcluster -C 5 -N 1000 -P 1 -W 2.0
+

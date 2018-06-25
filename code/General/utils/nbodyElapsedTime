@@ -6,9 +6,14 @@ import os
 things = os.listdir('.')
 
 
-if 'cluser_status.csv' not in things:
-    raise IOError('File cluser_status.csv not found in directory!, are you in an nbody simulation?')
+if 'cluser_status.csv' not in things and 'cluster_status.csv' not in things:
+    raise IOError('File cluser_status.csv [OLD] or cluster_status.csv not found in directory!, are you in an nbody simulation?')
 
-df = pd.read_csv('cluser_status.csv', sep=r'\s+', engine='python')
+if 'cluser_status.csv' in things:
+    filename = 'cluser_status.csv'
+elif 'cluster_status.csv' in things:
+    filename = 'cluster_status.csv'
+
+df = pd.read_csv(filename, sep=r'\s+', engine='python')
 df['Time'] = df['TTOT']*df['TSTAR']
 print('Total time elapsed: {:0.2f} Myr'.format(df['Time'].iloc[-1]))
