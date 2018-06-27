@@ -78,7 +78,7 @@ class nbody_snapshot:
             self.reload_at_step(step)
             yield self.single_star_data, self.time
 
-    def __get__(self, key):
+    def __getitem__(self, key):
         return self.single_star_data[key]
 
     def __len__(self):
@@ -88,12 +88,12 @@ class nbody_snapshot:
         out = list()
         last_step = (sort.sort_nicely(list(self.file)))[-1]
         out.append(f'|---------------------------')
-        out.append(f"| Snapshot     | {self.TTOT}")
-        out.append(f"| N            | {len(self.single_star_data)}")
-        out.append(f"| Centered at  | {self.center}")
-        out.append(f"| Stat Time    | {list(self.file['Step#0'].attrs.values())[0]}")
-        out.append(f"| Stop Time    | {list(self.file[last_step].attrs.values())[0]}")
-        out.append(f"| Subsnaps     | {len(self.file)}")
+        out.append(f"| Snapshot     : {self.TTOT}")
+        out.append(f"| N            : {len(self.single_star_data)}")
+        out.append(f"| Centered at  : {self.center}")
+        out.append(f"| Stat Time    : {list(self.file['Step#0'].attrs.values())[0]}")
+        out.append(f"| Stop Time    : {list(self.file[last_step].attrs.values())[0]}")
+        out.append(f"| Subsnaps     : {len(self.file)}")
         out.append(f'|---------------------------')
         return '\n'.join(out)
 
@@ -137,14 +137,14 @@ class snapshot_set:
                 snap.load()
         self.loaded = to_load
 
-    def __reset_buffer__(self, hard_reset=False):
+    def __reset_buffer__(self, init, hard_reset=False):
         if hard_reset:
             self.__clear_buffer__()
             self.snapshots, self.loaded = self.__build_buffer__(self.h5files,
-                                                                self.basepath, 0,
-                                                                self.buffer_size)
+                                                                self.basepath, init,
+                                                                self.buffer)
         else:
-            self.__shift_buffer__(0)
+            self.__shift_buffer__(init)
 
     def __build_tn_buffer__(self, n):
         """
@@ -164,8 +164,8 @@ class snapshot_set:
         return query_results
 
     def follow_ID(self, ID, start=0, follow_num=None):
-        if not set(self.loaded[:self.buffer]) == {True}:
-            self.__reset_buffer__()
+        if not set(self.loaded[start:start+self.buffer]) == {True}:
+            self.__reset_buffer__(start)
         times = list()
         df = self.snapshots[start].single_star_data[self.snapshots[start].single_star_data['NAM'] == ID]
         if len(df) != 0:

@@ -4,10 +4,12 @@ import os
 
 
 from .snapshot import snapshot_set
+from .sev import sev_reader
 
 class nbodyRun:
     def __init__(self, path, subsnap=False):
         self.snapset = snapshot_set(path)
+        self.sevset = sev_reader(path)
         path = (path[:-1] if path[-1]=="/" else path)
         csp_old = f"{path}/cluser_status.csv"
         csp_new = f"{path}/cluster_status.csv"
@@ -45,5 +47,7 @@ class nbodyRun:
         if self.new:
             out.append(f'| Delta Mass   : {self.mass_change():0.2f}')
         out.append(f'|---------------------------')
+        out.append(f'| Sev Status:')
+        out.append(str(self.sevset))
         out.append('|===========================')
         return '\n'.join(out)

@@ -1,0 +1,11 @@
+# Design Document for pyBody
+
+Basic Goal:
+    Provide a python interface to read the output data of the customized version of nbody6++GPU installed on my computer.
+
+Requirments:
+    1) Read individual snapshots
+    2) Read cluster_status.csv files
+    3) Track bodies thorugh all avalible snapshots
+    4) easy access to all useful information stored in
+        snapshots, and other written files
