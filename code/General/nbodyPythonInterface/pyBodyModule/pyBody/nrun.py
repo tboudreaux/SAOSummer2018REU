@@ -5,12 +5,15 @@ import os
 
 from .snapshot import snapshot_set
 from .sev import sev_reader
+from .lagr import lagr_base
 
 class nbodyRun:
     def __init__(self, path, subsnap=False):
         self.snapset = snapshot_set(path)
         self.sevset = sev_reader(path)
+
         path = (path[:-1] if path[-1]=="/" else path)
+        self.lagr = lagr_base(f"{path}/lagr.7")
         csp_old = f"{path}/cluser_status.csv"
         csp_new = f"{path}/cluster_status.csv"
 
@@ -49,5 +52,8 @@ class nbodyRun:
         out.append(f'|---------------------------')
         out.append(f'| Sev Status:')
         out.append(str(self.sevset))
+        out.append(f'| lagr status:')
+        out.append(str(self.lagr))
         out.append('|===========================')
+
         return '\n'.join(out)
