@@ -26,7 +26,11 @@ if [ $COPYDAT == '-d' ]; then
     fi
 fi
 
+mkdir $DIRNAME/run_meta
 
+cp run.info $DIRNAME/run_meta
+cp dat.10 $DIRNAME/run_meta
+cp $1 $DIRNAME/run_meta
 
 cd $DIRNAME
 

@@ -1,5 +1,8 @@
 *.h5part
 *-checkpoint.ipynb
+*.pyc
+__pycache__
+STOP
 *.0*
 *.1*
 *.2*
@@ -100,3 +103,5 @@
 *.97*
 *.98*
 *.99*
+
+simulations/runTests/OrbitTest/OLD_N1k_R3_K_T222-06-2018_11:51:01/STOP

@@ -139,3 +139,6 @@ Energy Error:
     - If I try and restart after the energy error happens the program crashes (KZ(2)=2 to restart, KZ(2)=1 to end when the energy error arises)
 
     - By changing the energy tolerance (QE) this problem seams to be mitigable, at least in the short term? (went from 2e-5 to 2e-3)
+
+Restart Errors:
+    Biggest current issue is that I cannot get a simulation to restart either after it has hit TCRIT or after a soft stop when I introduce a STOP file. The manual says that it should restart based on the COMMON data in the fort.1 and fort.2 files, which are theoretically written out when KZ(1, 2) > 0. However, I cannot find these files anywhere so I belive the issue is due to that.

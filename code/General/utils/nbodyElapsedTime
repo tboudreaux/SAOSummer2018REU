@@ -16,4 +16,6 @@ elif 'cluster_status.csv' in things:
 
 df = pd.read_csv(filename, sep=r'\s+', engine='python')
 df['Time'] = df['TTOT']*df['TSTAR']
-print('Total time elapsed: {:0.2f} Myr'.format(df['Time'].iloc[-1]))
+last_time = df['Time'].iloc[-1]
+Physical_time = ("{:0.2f} Myr".format(last_time) if last_time < 1000 else "{:0.2f} Gyr".format(last_time/1000))
+print('Total time elapsed: {}, {:0.2f} NB'.format(Physical_time, df['TTOT'].iloc[-1]))
